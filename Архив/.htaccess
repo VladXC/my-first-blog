@@ -1,0 +1,23 @@
+# BEGIN Redirect
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} .
+RewriteCond %{HTTP_HOST} ^silk-way\.hostenko\.com$ [NC]
+RewriteRule (.*) http://silk-way.moscow/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} .
+RewriteCond %{HTTP_HOST} ^www\.silk-way\.hostenko\.com$ [NC]
+RewriteRule (.*) http://www.silk-way.moscow/$1 [R=301,L]
+# END Redirect
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
